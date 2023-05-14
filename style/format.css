@@ -11,7 +11,10 @@
 
 :root {
     --primary-element-bg-color: #303133;
+    --primary-general-bg-color: #222222;
     --primary-element-text-color: #bdc1c6;
+    --primary-general-text-color: #ffffff;
+    --border-color: rgb(47, 51, 54);
 }
 
 body {
@@ -20,7 +23,7 @@ body {
     align-content: flex-start;
     height: 100vh;
     margin: 0;
-    background-color: #222222;
+    background-color: var(--primary-general-bg-color);
     border: none;
 }
 
@@ -31,12 +34,8 @@ main {
     padding-right: 10px;
 }
 
-.flex {
-    display: flex;
-}
-
 .font {
-    color: #ffffff;
+    color: var(--primary-general-text-color);
     font-weight: 200;
     font-family: BasemantGrotesque;
 }
@@ -53,28 +52,33 @@ main {
     padding-bottom: 30px;
 }
 
+.stopwatch-format {
+    margin-left: 10px;
+    width: 120px;
+}
+
 /*seperators*/
 .right_seperator {
     border-right-width: 1px;
     border-right-style: solid;
-    border-right-color: rgb(47, 51, 54);
+    border-right-color: var(--border-color);
 }
 
 .left_seperator {
     border-left-width: 1px;
     border-left-style: solid;
-    border-left-color: rgb(47, 51, 54);
+    border-left-color: var(--border-color);
 }
 
 .top_seperator {
     border-top-width: 1px;
-    border-top-color: rgb(47, 51, 54);
+    border-top-color: var(--border-color);
     border-top-style: solid;
 }
 
 /*aligning*/
-.align_item_center {
-    align-items: center;
+.align_self_center {
+    align-self: center;
 }
 
 .align_text_center {
@@ -96,14 +100,7 @@ main {
     align-items: center;
 }
 
-
-/*typewriter effect*/
-
-
-
-
-
-
+/*request*/
 .request-container {
     display: flex;
     align-items: center;
@@ -133,11 +130,6 @@ textarea {
 
 }
 
-.button-container {
-    display: flex;
-    flex-direction: row;
-}
-
 .button {
     background-color: var(--primary-element-bg-color);
     border: none;
@@ -145,7 +137,6 @@ textarea {
     fill: var(--primary-element-text-color);
 }
 
-input:focus,
 textarea:focus {
     outline: none;
 }
