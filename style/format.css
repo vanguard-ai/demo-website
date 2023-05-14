@@ -1,0 +1,151 @@
+@font-face {
+    font-family: BasemantGrotesque;
+    src: url("BasementGrotesque-Black_v1.202.woff") format("woff"),
+        url("BasementGrotesque-Black_v1.202.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Argentum;
+    src: url("ArgentumSans-Bold.otf") format("opentype");
+}
+
+:root {
+    --primary-element-bg-color: #303133;
+    --primary-element-text-color: #bdc1c6;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    height: 100vh;
+    margin: 0;
+    background-color: #222222;
+    border: none;
+}
+
+main {
+    width: 60%;
+    max-width: 1000px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.flex {
+    display: flex;
+}
+
+.font {
+    color: #ffffff;
+    font-weight: 200;
+    font-family: BasemantGrotesque;
+}
+
+.row {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/*seperators*/
+.right_seperator {
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgb(47, 51, 54);
+}
+
+.left_seperator {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: rgb(47, 51, 54);
+}
+
+.top_seperator {
+    border-top-width: 1px;
+    border-top-color: rgb(47, 51, 54);
+    border-top-style: solid;
+}
+
+/*aligning*/
+.align_item_center {
+    align-items: center;
+}
+
+.align_text_center {
+    text-align: center;
+}
+
+
+/*svg*/
+.svg-container {
+    width: 25px;
+    height: 25px;
+    margin-right: 4px;
+}
+
+.svg-container svg {
+    width: 90%;
+    height: 90%;
+    display: block;
+    align-items: center;
+}
+
+
+/*typewriter effect*/
+
+
+
+
+
+
+.request-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-element-bg-color);
+    margin: 5px;
+    color: var(--primary-element-text-color);
+}
+
+.textarea-container {
+    width: 100%;
+}
+
+textarea {
+    display: flex;
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    max-height: 200px;
+    /* Set the maximum height */
+    background-color: var(--primary-element-bg-color);
+    color: var(--primary-element-text-color);
+    border: none;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.button {
+    background-color: var(--primary-element-bg-color);
+    border: none;
+    cursor: pointer;
+    fill: var(--primary-element-text-color);
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
