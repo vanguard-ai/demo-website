@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vanguard-Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../dist/output.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="navbar bg-base-100">
+            <div class="flex-1">
+                <a class="btn btn-ghost normal-case text-xl text-accent" href="/Website/src/index.html">Vanguard</a>
+            </div>
+            <div class="flex-none">
+
+                <div class="dropdown dropdown-end">
+                    <button class="btn btn-square btn-ghost">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            class="inline-block w-5 h-5 stroke-current">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <label class="cursor-pointer label">
+                            <span class="label-text">English</span>
+                            <input type="checkbox" class="toggle toggle-primary" checked />
+                            <span class="label-text">German</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="max-w-screen-lg mx-auto">
+
+            <div role="spacer" class="pb-40"></div>
+
+            <div role="heading" class="flex justify-center">
+                <div class="text-5xl self-center font-bold">
+                    <h1>Factchecking made <span class="underline underline-offset-4 text-accent">Easy</span></h1>
+                </div>
+            </div>
+
+            <div role="spacer" class="pb-12"></div>
+            <div class="form-control max-h-52">
+                <div class="input-group flex">
+                    <textarea id="inputField" rows="2" autocapitalize="none" autocorrect="off" autocomplete="off"
+                        tabindex="0" spellcheck="false" placeholder="Input a text you want to check"
+                        class="textarea bg-neutral text-primary flex-grow resize-none h-full max-h-52"></textarea>
+                    <button id="clearButton" tabindex="1" class="btn btn-square h-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path
+                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                        </svg>
+                    </button>
+                    <button id="searchButton" tabindex="0" class="btn btn-square h-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div role="spacer" class="p-3"></div>
+
+            <div role="alert-information" class="flex justify-center">
+                <div class="alert alert-info shadow-lg max-w-fit self-center">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            class="stroke-current flex-shrink-0 w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+            <div role="Answers" class="flex flex-col justify-center">
+                <div class="indicator self-center">
+                    <div class="indicator-item badge badge-secondary">00:00:000</div>
+                    <div class="rounded-lg">
+                        <div tabindex="0"
+                            class="collapse collapse-arrow border border-base-300 bg-primary rounded-box mt-2">
+                            <div id="inputSection" class="collapse-title text-xl font-medium">
+                                Focus me to see content
+                            </div>
+                            <div id="outputSection" class="collapse-content">
+                                <span id="outputContent">tabindex="0" attribute is necessary to make the div
+                                    focusable</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer footer-center p-4 bg-base-300 text-base-content mt-20">
+        <div>
+            <p>Project by Richard Voigtmann Alexander Lowa</p>
+            <p>Copyright © 2023 - All right reserved by vanguard-ai</p>
+        </div>
+    </footer>
+
+
+    <script src="./js/inputfield.js" type="module"></script>
+</body>
+
+</html>
