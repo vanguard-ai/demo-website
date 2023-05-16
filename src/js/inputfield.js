@@ -9,7 +9,7 @@ inputField.addEventListener("input", () => {
   inputField.style.height = `${inputField.scrollHeight}px`;
 
   const parentDiv = inputField.parentElement.parentElement;
-  parentDiv.style.height = `${inputField.scrollHeight}px`;
+  parentDiv.style.height = `${inputField.scrollHeight + 6}px`;
   parentDiv.style.overflowY = "hidden";
 
   // Check if the inputField height has reached its maximum height
