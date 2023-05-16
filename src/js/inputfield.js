@@ -8,13 +8,18 @@ inputField.addEventListener("input", () => {
   inputField.style.height = "auto";
   inputField.style.height = `${inputField.scrollHeight}px`;
 
-  // Check if the textarea height has reached its maximum height
+  const parentDiv = inputField.parentElement.parentElement;
+  parentDiv.style.height = `${inputField.scrollHeight + 6}px`;
+  parentDiv.style.overflowY = "hidden";
+
+  // Check if the inputField height has reached its maximum height
   if (parseInt(inputField.style.height) >= parseInt(getComputedStyle(inputField).maxHeight)) {
     inputField.style.overflowY = "auto";
   } else {
     inputField.style.overflowY = "hidden";
   }
 });
+
 
 const extractTwitterID = (url) => {
   const regex = /(\d{10,})/;
@@ -58,29 +63,23 @@ document.getElementById("searchButton").addEventListener("click", async () => {
   const newDiv = document.createElement("div");
   newDiv.setAttribute("name", `answer-${answerCounter}`);
   newDiv.innerHTML = `
-    <div class="top_seperator"></div>
-    <div>  
-      <div id="inputSection">
-        <span>${textFieldValue}</span>
-      </div>
-    </div>
-    <div>
-      <div class="row">
-        <div>
-          <h6>OUTPUT</h6>
+    <div class="indicator mt-5 w-full">
+      <div id="stopwatch" class="indicator-item badge badge-accent font-semibold">00:00</div>
+      <div class="rounded-lg w-full">
+        <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-primary rounded-box">
+          <div id="inputSection" class="collapse-title text-xl font-semibold">
+            Focus me to see content <span>${textFieldValue}</span>
+          </div>
+          <div id="outputSection" class="collapse-content">
+            <span id="outputContent">Working ...</span>
+          </div>
         </div>
-        <div class="row align_self_center">
-          <span>Working:</span>
-          <div id="stopwatch" class="stopwatch-format">00:00:000</div>
-        </div>
-      </div>
-      <div id="outputSection">
-        <span id="outputContent"></span>
       </div>
     </div>
   `;
+
   // Append the separator and the new div to the container
-  const container = document.querySelector('[role="content"]');
+  const container = document.querySelector('[role="Answers"]');
   container.prepend(newDiv);
   inputField.value = "";
   inputField.style.height = "auto";
