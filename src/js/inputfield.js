@@ -62,17 +62,16 @@ document.getElementById("searchButton").addEventListener("click", async () => {
   // Create a new div with an increasing name="answer-number" attribute
   const newDiv = document.createElement("div");
   newDiv.setAttribute("name", `answer-${answerCounter}`);
-  newDiv.setAttribute("class", `self-center`);
   newDiv.innerHTML = `
-    <div class="indicator">
-      <span id="stopwatch" class="indicator-item badge badge-secondary">00:00:000</span>
-      <div class="rounded-lg">
-        <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-primary rounded-box mt-2">
-          <div id="inputSection" class="collapse-title text-xl font-medium">
+    <div class="indicator mt-5 w-full">
+      <div id="stopwatch" class="indicator-item badge badge-accent font-semibold">00:00</div>
+      <div class="rounded-lg w-full">
+        <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-primary rounded-box">
+          <div id="inputSection" class="collapse-title text-xl font-semibold">
             Focus me to see content <span>${textFieldValue}</span>
           </div>
           <div id="outputSection" class="collapse-content">
-            <span id="outputContent">tabindex="0" attribute is necessary to make the div focusable</span>
+            <span id="outputContent">Working ...</span>
           </div>
         </div>
       </div>
@@ -98,18 +97,3 @@ document.getElementById("searchButton").addEventListener("click", async () => {
     stopStopwatch();
   }
 });
-
-//<div>
-//<div class="row">
-//  <div>
-//    <h6>OUTPUT</h6>
-//  </div>
-//  <div class="row align_self_center">
-//    <span>Working:</span>
-//    <div id="stopwatch" class="stopwatch-format">00:00:000</div>
-//  </div>
-//</div>
-//<div id="outputSection">
-//  <span id="outputContent"></span>
-//</div>
-//</div>

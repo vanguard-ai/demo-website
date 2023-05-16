@@ -9,11 +9,10 @@ function timeToString(time) {
 
   let formattedMM = mm.toString().padStart(2, "0");
   let formattedSS = ss.toString().padStart(2, "0");
-  let formattedMS = ms.toString().padStart(3, "0");
+  //let formattedMS = ms.toString().slice(0, 2).padStart(2, "0");
 
-  return `${formattedMM}:${formattedSS}:${formattedMS}`;
+  return `${formattedMM}:${formattedSS}`;
 }
-
 
 let stopwatchInterval;
 
