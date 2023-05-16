@@ -1,20 +1,12 @@
-@font-face {
-    font-family: BasemantGrotesque;
-    src: url("BasementGrotesque-Black_v1.202.woff") format("woff"),
-        url("BasementGrotesque-Black_v1.202.otf") format("opentype");
-}
-
-@font-face {
-    font-family: Argentum;
-    src: url("ArgentumSans-Bold.otf") format("opentype");
-}
-
 :root {
-    --primary-element-bg-color: #303133;
-    --primary-general-bg-color: #222222;
-    --primary-element-text-color: #bdc1c6;
-    --primary-general-text-color: #ffffff;
+    --font-family1: 'DM Mono', monospace;
+    --font-family2: 'DM Sans', sans-serif;
+    --secundary-bg-color: #303133;
+    --primary-bg-color: #222222;
+    --secundary-text-color: #bdc1c6;
+    --primary-text-color: #ffffff;
     --border-color: rgb(47, 51, 54);
+
 }
 
 body {
@@ -23,7 +15,7 @@ body {
     align-content: flex-start;
     height: 100vh;
     margin: 0;
-    background-color: var(--primary-general-bg-color);
+    background-color: var(--primary-bg-color);
     border: none;
 }
 
@@ -34,10 +26,16 @@ main {
     padding-right: 10px;
 }
 
+a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+
+
 .font {
-    color: var(--primary-general-text-color);
+    color: var(--primary-text-color);
     font-weight: 200;
-    font-family: BasemantGrotesque;
+    font-family: var(--font-family2);
 }
 
 .row {
@@ -104,9 +102,9 @@ main {
 .request-container {
     display: flex;
     align-items: center;
-    background-color: var(--primary-element-bg-color);
+    background-color: var(--secundary-bg-color);
     margin: 5px;
-    color: var(--primary-element-text-color);
+    color: var(--secundary-text-color);
 }
 
 .textarea-container {
@@ -120,8 +118,8 @@ textarea {
     overflow: hidden;
     max-height: 200px;
     /* Set the maximum height */
-    background-color: var(--primary-element-bg-color);
-    color: var(--primary-element-text-color);
+    background-color: var(--secundary-bg-color);
+    color: var(--secundary-text-color);
     border: none;
     margin-top: 12px;
     margin-bottom: 12px;
@@ -131,10 +129,10 @@ textarea {
 }
 
 .button {
-    background-color: var(--primary-element-bg-color);
+    background-color: var(--secundary-bg-color);
     border: none;
     cursor: pointer;
-    fill: var(--primary-element-text-color);
+    fill: var(--secundary-text-color);
 }
 
 textarea:focus {
