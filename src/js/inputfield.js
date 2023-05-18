@@ -1,5 +1,5 @@
 import { typewriterEffect } from './typewriter.js';
-import { twitterAPICall } from './api.js';
+import { textAPICall, twitterAPICall } from './api.js';
 import { startStopwatch, stopStopwatch } from './stopwatch.js';
 
 const inputField = document.getElementById("inputField");
@@ -63,19 +63,22 @@ document.getElementById("searchButton").addEventListener("click", async () => {
   const newDiv = document.createElement("div");
   newDiv.setAttribute("name", `answer-${answerCounter}`);
   newDiv.innerHTML = `
-    <div class="indicator mt-5 w-full">
-      <div id="stopwatch" class="indicator-item badge badge-accent font-semibold">00:00</div>
-      <div class="rounded-lg w-full">
-        <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-primary rounded-box">
-          <div id="inputSection" class="collapse-title text-xl font-semibold">
-            Focus me to see content <span>${textFieldValue}</span>
-          </div>
-          <div id="outputSection" class="collapse-content">
-            <span id="outputContent">Working ...</span>
-          </div>
-        </div>
-      </div>
-    </div>
+                    <div class="indicator mt-5 w-full">
+                        <div id="stopwatch" class="indicator-item badge badge-accent font-semibold">00:00</div>
+                        <div class="rounded-lg w-full">
+                            <div class="collapse border border-base-300 bg-primary rounded-box">
+                                <input type="checkbox" />
+                                <div id="inputSection" class="collapse-title text-xl font-semibold">
+                                  ${textFieldValue}
+                                </div>
+                                <div id="outputSection" class="collapse-content">
+                                    <span id="outputContent">Working ...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="hiddenText" class="invisible h-0">Working ... ${textFieldValue}</div>
+
   `;
 
   // Append the separator and the new div to the container
@@ -85,15 +88,40 @@ document.getElementById("searchButton").addEventListener("click", async () => {
   inputField.style.height = "auto";
   const stopwatchElement = newDiv.querySelector("#stopwatch");
   startStopwatch(stopwatchElement)
+
   if (twitterID && username) {
     const twitterData = await twitterAPICall(username, twitterID);
+    console.log('twitterData :>> ', twitterData);
     stopStopwatch();
     const myOutput = JSON.stringify(twitterData, null, 2);
     typewriterEffect(newDiv.querySelector("#outputContent"), myOutput);
   } else {
-    //const apiData = await CallAPI(textFieldValue);
-    //newDiv.querySelector("#outputSection").innerHTML = JSON.stringify(apiData, null, 2);
-    typewriterEffect(newDiv.querySelector("#outputContent"), "test");
+    const myOutput = await textAPICall(textFieldValue);
+    console.log('myOutput :>> ', myOutput);
+    var data = JSON.parse(myOutput);
     stopStopwatch();
+    var contentString = data.content;
+    typewriterEffect(newDiv.querySelector("#outputContent"), contentString);
+
   }
 });
+
+
+//// Get the necessary elements
+//const collapseArrow = document.querySelector('.collapse');
+//const inputSection = document.getElementById('inputSection');
+//const hiddenText = document.getElementById('hiddenText');
+
+//// Add a click event listener to the collapse arrow
+//collapseArrow.addEventListener('click', function () {
+//  // Check if the checkbox is checked
+
+//  const currentText = inputSection.textContent;
+//  const hiddenTextContent = hiddenText.textContent;
+
+//  inputSection.textContent = hiddenTextContent;
+//  hiddenText.textContent = currentText;
+
+//});
+
+
