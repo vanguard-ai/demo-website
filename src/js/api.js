@@ -1,5 +1,6 @@
 import { api_url } from "./config.js";
 import { c_url } from "./config.js";
+import { local_url } from "./config.js";
 const controller = new AbortController();
 const timeoutDuration = 1000000;
 const timeoutId = setTimeout(() => controller.abort(), timeoutDuration);
@@ -9,35 +10,25 @@ export const twitterAPICall = async (tweet_name, tweet_id) => {
   console.log('tweet_id :>> ', tweet_id);
   try {
     const response = await fetch(api_url + tweet_name + "/" + tweet_id, {
-      method: "POST",
-      signal: controller.signal
-    });
-    const myJson = await response.json();
-    clearTimeout(timeoutId);
-    console.log('myJson :>> ', myJson);
-    var data = JSON.parse(myJson);
-    console.log('data :>> ', data);
-
-    const firstItem = data[0];
-    const restItems = data.slice(1);
-
-    console.log("First item :>>", firstItem);
-    console.log("Rest items :>>", restItems);
-
-    var encodedString1 = btoa(firstItem);
-    console.log('encodedString :>> ', encodedString1);
-    var encodedString2 = btoa(restItems);
-    console.log('encodedString :>> ', encodedString2);
-
-    const response2 = await fetch(c_url + firstItem + "/" + restItems, {
       method: "GET",
       signal: controller.signal
     });
-    console.log('response :>> ', response);
-    const myJson2 = await response2.json();
-    var data2 = JSON.stringify(myJson2);
-    console.log('data2 :>> ', data2);
-    return data2;
+    const myJson = await response.json();
+    // const myJson = my2Response;
+    clearTimeout(timeoutId);
+    console.log('myJson :>> ', myJson);
+    var data = JSON.stringify(myJson);
+    console.log('data :>> ', data);
+
+    var tweetText = myJson["firstcomment"];
+    var tweetcomments = myJson["data"];
+    console.log('tweetdata :>>', tweetcomments);
+    console.log('text :>>', tweetText);
+
+    const myJson2 = await twitterCall(tweetText, tweetcomments)
+    console.log(myJson2)
+    return myJson2;
+
   } catch (error) {
     if (error.name === 'AbortError') {
       console.error('Request timed out');
@@ -45,6 +36,32 @@ export const twitterAPICall = async (tweet_name, tweet_id) => {
       console.error('Request failed', error);
     }
   }
+}
+
+export const twitterCall = async (text, data) => {
+  try {
+    console.log("BREAK")
+    console.log(text)
+    console.log(data)
+    console.log("BREAK URL:")
+    console.log(c_url + text + "/" + data)
+    const response2 = await fetch(c_url + text + "/" + data, {
+      method: "GET",
+      signal: controller.signal
+    });
+    console.log('response2 :>> ', response2);
+    const myJson2 = await response2.json();
+    const stringJson = JSON.stringify(myJson2);
+    console.log('myJson2 :>> ', myJson2);
+    return stringJson
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      console.error('Request timed out');
+    } else {
+      console.error('Request failed', error);
+    }
+  }
+
 }
 
 
@@ -60,7 +77,7 @@ export const textAPICall = async (textFieldValue) => {
     console.log('response :>> ', response);
     const myJson = await response.json();
     clearTimeout(timeoutId);
-    const stringJson = JSON.stringify(myJson)
+    const stringJson = JSON.stringify(myJson);
     console.log('myJson :>> ', myJson);
     return stringJson;
   } catch (error) {
